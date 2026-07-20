@@ -1,0 +1,157 @@
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--cream-200);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.tabs .tab, .tabs .tab-active {
+  border: none;
+  background: transparent;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--coffee-600);
+}
+
+.tabs .tab-active {
+  background: white;
+  color: var(--coffee-900);
+  box-shadow: var(--shadow-sm);
+}
+
+.pos-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.pos-catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 8px 0 16px;
+}
+
+.pos-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  border: 1px solid var(--border);
+  background: var(--cream-100);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.pos-item:hover:not(:disabled) {
+  border-color: var(--copper-500);
+  background: white;
+}
+
+.pos-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pos-item strong {
+  font-size: 0.88rem;
+  color: var(--coffee-900);
+}
+
+.pos-item span {
+  color: var(--copper-600);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.pos-item small {
+  color: var(--coffee-600);
+  font-size: 0.72rem;
+}
+
+.pos-carrito {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pos-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--coffee-800);
+}
+
+.pos-label select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream-100);
+}
+
+.pos-lista-carrito {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.pos-fila-carrito {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.pos-fila-carrito small {
+  display: block;
+  color: var(--coffee-600);
+  font-size: 0.72rem;
+}
+
+.pos-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pos-cantidad button {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.pos-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--border);
+  padding-top: 12px;
+  font-size: 1.1rem;
+}
+
+.pos-boton-cobrar {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .pos-grid {
+    grid-template-columns: 1fr;
+  }
+}

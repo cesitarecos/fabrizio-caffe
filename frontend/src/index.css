@@ -1,0 +1,51 @@
+:root {
+  --coffee-900: #2C1B14;
+  --coffee-800: #3C2A21;
+  --coffee-600: #6B4A3A;
+  --cream-100: #FBF6EF;
+  --cream-200: #F1E7D8;
+  --copper-500: #B8703F;
+  --copper-600: #9C5A2E;
+  --teal-500: #4C7A6D;
+  --red-500: #B4453A;
+  --ink-900: #241611;
+  --border: #E4D6C3;
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(44, 27, 20, 0.08);
+  --shadow-md: 0 8px 24px rgba(44, 27, 20, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--cream-100);
+  color: var(--ink-900);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", "Georgia", serif;
+  color: var(--coffee-900);
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,76 @@
+.welcome-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, var(--coffee-600), var(--coffee-900));
+  padding: 20px;
+}
+
+.welcome-card {
+  background: var(--cream-100);
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.welcome-brand span {
+  font-size: 2.4rem;
+}
+
+.welcome-brand h1 {
+  font-size: 1.8rem;
+  margin: 10px 0 6px;
+}
+
+.welcome-brand p {
+  margin: 0 0 32px;
+  color: var(--coffee-600);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-welcome {
+  display: block;
+  padding: 13px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.btn-welcome-primary {
+  background: var(--copper-500);
+  color: white;
+}
+
+.btn-welcome-primary:hover {
+  background: var(--copper-600);
+}
+
+.btn-welcome-secondary {
+  background: transparent;
+  color: var(--coffee-800);
+  border: 1px solid var(--border);
+}
+
+.btn-welcome-secondary:hover {
+  background: var(--cream-200);
+}
+
+.welcome-footer {
+  margin: 28px 0 0;
+  font-size: 0.75rem;
+  color: var(--coffee-600);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

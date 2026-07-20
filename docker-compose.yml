@@ -1,0 +1,24 @@
+services:
+  backend:
+    build: ./backend
+    container_name: fabrizio-backend
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - ./backend/.env
+
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: fabrizio-frontend
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped
