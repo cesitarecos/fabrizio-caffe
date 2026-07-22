@@ -10,35 +10,47 @@ env:
   REGISTRY: fabriziocaffeacr.azurecr.io
 
 jobs:
-
   deploy:
-
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: latest
 
-    - name: Configure kubectl
-      run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.AKS_KUBECONFIG }}" > ~/.kube/config
+      - name: Configure kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo '${{ secrets.AKS_KUBECONFIG }}' > ~/.kube/config
+          chmod 600 ~/.kube/config
 
-    - name: Update Backend
-      run: |
-        kubectl set image deployment/backend \
-        backend=$REGISTRY/backend:${{ github.event.workflow_run.head_sha }}
+      - name: Verify cluster connection
+        run: |
+          kubectl cluster-info
+          kubectl get nodes
 
-    - name: Update Frontend
-      run: |
-        kubectl set image deployment/frontend \
-        frontend=$REGISTRY/frontend:${{ github.event.workflow_run.head_sha }}
+      - name: Update Backend
+        run: |
+          kubectl set image deployment/backend backend=$REGISTRY/backend:${{ github.event.workflow_run.head_sha }}
 
-    - name: Wait Backend
-      run: kubectl rollout status deployment/backend
+      - name: Update Frontend
+        run: |
+          kubectl set image deployment/frontend frontend=$REGISTRY/frontend:${{ github.event.workflow_run.head_sha }}
 
-    - name: Wait Frontend
-      run: kubectl rollout status deployment/frontend
+      - name: Wait Backend
+        run: kubectl rollout status deployment/backend --timeout=180s
+
+      - name: Wait Frontend
+        run: kubectl rollout status deployment/frontend --timeout=180s
+
+      - name: Verify deployment
+        run: |
+          kubectl get pods
+          kubectl get svc
+          kubectl get ingress
